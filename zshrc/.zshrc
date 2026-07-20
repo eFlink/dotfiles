@@ -24,8 +24,14 @@ bindkey -M isearch . self-insert
 alias gwt='git worktree'
 alias gwta='git worktree add'
 alias gwtl='git worktree list'
-alias gwtr='git worktree remove'
 alias gwtp='git worktree prune'
+
+# remove one or more worktrees; supports globs like: gwtr CF-*
+gwtr() {
+  for wt in "$@"; do
+    git worktree remove "$wt"
+  done
+}
 
 # Lazygit & Lazydocker
 alias lg='lazygit'
